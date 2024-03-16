@@ -90,6 +90,7 @@ return {
             rust_analyzer = {},
             tsserver = {},
             html = { filetypes = { 'html', 'twig', 'hbs'} },
+            tailwindcss = {},
             julials = {},
             emmet_ls = {},
             lua_ls = {
