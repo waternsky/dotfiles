@@ -8,4 +8,4 @@ Currently, new to yabai stuff. Useful for my workflow to switch around the space
 
 # Credits
 
-* Checkout [Josean Martinez](www.youtube.com/@joseanmartinez), for yabai & skhd.
+* Checkout [Josean Martinez](https://www.youtube.com/@joseanmartinez/videos), for yabai & skhd.
