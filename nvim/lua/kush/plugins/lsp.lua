@@ -85,7 +85,15 @@ return {
         local servers = {
             clangd = {},
             gopls = {},
-            pylsp = {},
+            pylsp = {
+                pylsp = {
+                    plugins = {
+                        pylint = { enabled = false },
+                        pyflakes = { enabled = false },
+                        pycodestyle = { enabled = false },
+                    },
+                },
+            },
             ruff_lsp = {},
             rust_analyzer = {},
             tsserver = {},
