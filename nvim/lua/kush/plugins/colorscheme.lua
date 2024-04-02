@@ -51,6 +51,6 @@ return {
             },
         })
         vim.cmd([[colorscheme catppuccin]])
-        vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't line LineNr color, so i changed it
+        vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't like LineNr color, so i changed it
     end
 }
