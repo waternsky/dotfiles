@@ -67,6 +67,8 @@ return {
 
             nmap('gl', vim.diagnostic.setloclist, 'Open diagnostics list')
             nmap('gk', vim.diagnostic.open_float, 'Open floating diagnostic message')
+            nmap('[d', vim.diagnostic.goto_prev, 'Goto previous diagnostic message')
+            nmap(']d', vim.diagnostic.goto_next, 'Goto next diagnostic message')
             nmap('<leader>T', builtin.lsp_type_definitions, '[T]ype Definition')
 
             -- See `:help K` for why this keymap
@@ -99,6 +101,7 @@ return {
             tsserver = {},
             html = { filetypes = { 'html', 'twig', 'hbs'} },
             tailwindcss = {},
+            prismals = {},
             julials = {},
             emmet_ls = {},
             lua_ls = {
