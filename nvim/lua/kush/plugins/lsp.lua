@@ -87,16 +87,7 @@ return {
         local servers = {
             clangd = {},
             gopls = {},
-            pylsp = {
-                pylsp = {
-                    plugins = {
-                        pylint = { enabled = false },
-                        pyflakes = { enabled = false },
-                        pycodestyle = { enabled = false },
-                    },
-                },
-            },
-            ruff_lsp = {},
+            pyright = {},
             rust_analyzer = {},
             tsserver = {},
             html = { filetypes = { 'html', 'twig', 'hbs'} },
@@ -104,6 +95,7 @@ return {
             prismals = {},
             julials = {},
             emmet_ls = {},
+            ocamllsp = {},
             lua_ls = {
                 Lua = {
 					runtime = {
