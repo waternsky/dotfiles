@@ -1,5 +1,7 @@
-vim.opt.relativenumber = true
-vim.opt.number = true
+vim.opt.guicursor = ""
+
+vim.opt.nu = true
+vim.opt.rnu = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -7,8 +9,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
-
-vim.opt.colorcolumn = "1000"
 
 vim.opt.wrap = false
 

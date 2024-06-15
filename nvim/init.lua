@@ -1,2 +1,1 @@
-require("kush.core")
-require("kush.lazy")
+require("kush")
