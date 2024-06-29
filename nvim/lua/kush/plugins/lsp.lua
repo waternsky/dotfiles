@@ -36,6 +36,7 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "tsserver",
+                "clangd",
             },
             handlers = {
                 function(server_name)
@@ -61,6 +62,13 @@ return {
                                 telemetry = { enable = false },
                             },
                         },
+                    })
+                end,
+
+                ["clangd"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.clangd.setup({
+                        cmd = { "clangd", "--query-driver=/usr/bin/g++" },
                     })
                 end,
             },
