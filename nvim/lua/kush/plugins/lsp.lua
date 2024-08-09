@@ -37,6 +37,7 @@ return {
                 "gopls",
                 "tsserver",
                 "clangd",
+                "tailwindcss",
             },
             handlers = {
                 function(server_name)
@@ -65,13 +66,45 @@ return {
                     })
                 end,
 
+                ["pylsp"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.pylsp.setup({
+                        settings = {
+                            pylsp = {
+                                plugins = {
+                                    pycodestyle = {
+                                        ignore = {'E501'},
+                                    },
+                                },
+                            },
+                        },
+                    })
+                end,
+
                 ["clangd"] = function ()
                     local lspconfig = require("lspconfig")
                     lspconfig.clangd.setup({
                         cmd = { "clangd", "--query-driver=/usr/bin/g++" },
                     })
                 end,
+
+                ["tsserver"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.tsserver.setup({
+                        settings = {
+                            implicitProjectConfiguration = {
+                                checkJs = true,
+                            },
+                        },
+                    })
+                end,
             },
+        })
+
+        local lspconfig = require("lspconfig")
+        lspconfig.mojo.setup({
+            capabilities = capabilities,
+            cmd = { "/Users/kush/.modular/pkg/packages.modular.com_mojo/bin/mojo-lsp-server" },
         })
 
         local cmp = require("cmp")
