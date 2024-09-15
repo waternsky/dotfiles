@@ -66,14 +66,18 @@ return {
                     })
                 end,
 
-                ["pylsp"] = function ()
+                ["pylsp"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.pylsp.setup({
                         settings = {
                             pylsp = {
                                 plugins = {
+                                    ruff = {
+                                        enabled = true,
+                                    },
                                     pycodestyle = {
-                                        ignore = {'E501'},
+                                        enabled = false,
+                                        ignore = { "E501" },
                                     },
                                 },
                             },
@@ -81,14 +85,14 @@ return {
                     })
                 end,
 
-                ["clangd"] = function ()
+                ["clangd"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.clangd.setup({
                         cmd = { "clangd", "--query-driver=/usr/bin/g++" },
                     })
                 end,
 
-                ["tsserver"] = function ()
+                ["tsserver"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.tsserver.setup({
                         settings = {
@@ -151,18 +155,13 @@ return {
             },
         })
 
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-                border = "rounded",
-            }
-        )
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+            border = "rounded",
+        })
 
-        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-            vim.lsp.handlers.signature_help,
-            {
-                border = "rounded"
-            }
-        )
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+            border = "rounded",
+        })
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("kush", {}),
@@ -172,7 +171,7 @@ return {
                 vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
                 vim.keymap.set("n", "gr", builtin.lsp_references, opts)
 
-                vim.keymap.set("n", 'gl', vim.diagnostic.setloclist, opts)
+                vim.keymap.set("n", "gl", vim.diagnostic.setloclist, opts)
                 vim.keymap.set("n", "gk", vim.diagnostic.open_float, opts)
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
@@ -189,7 +188,7 @@ return {
                 vim.api.nvim_buf_create_user_command(args.buf, "Format", function()
                     vim.lsp.buf.format()
                 end, {})
-            end
+            end,
         })
     end,
 }
