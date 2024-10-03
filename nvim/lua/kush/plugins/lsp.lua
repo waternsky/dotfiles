@@ -35,7 +35,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
-                "tsserver",
+                "ts_ls",
                 "clangd",
                 "tailwindcss",
             },
@@ -92,9 +92,9 @@ return {
                     })
                 end,
 
-                ["tsserver"] = function()
+                ["ts_ls"] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.tsserver.setup({
+                    lspconfig.ts_ls.setup({
                         settings = {
                             implicitProjectConfiguration = {
                                 checkJs = true,
@@ -108,7 +108,12 @@ return {
         local lspconfig = require("lspconfig")
         lspconfig.mojo.setup({
             capabilities = capabilities,
-            cmd = { "/Users/kush/.modular/pkg/packages.modular.com_mojo/bin/mojo-lsp-server" },
+            cmd = { "/Users/kush/.modular/bin/mojo-lsp-server" },
+        })
+
+        lspconfig.ocamllsp.setup({
+            capabilities = capabilities,
+            cmd = { "/Users/kush/.opam/default/bin/ocamllsp" },
         })
 
         local cmp = require("cmp")

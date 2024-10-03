@@ -19,6 +19,7 @@ return {
                 yaml = { "prettier" },
                 markdown = { "prettier" },
                 graphql = { "prettier" },
+                ocaml = { "ocamlformat" },
             },
             format_on_save = {
                 lsp_fallback = true,
