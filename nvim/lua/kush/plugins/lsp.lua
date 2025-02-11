@@ -88,7 +88,10 @@ return {
                 ["clangd"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.clangd.setup({
-                        cmd = { "clangd", "--query-driver=/usr/bin/g++" },
+                        cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+                        init_options = {
+                            fallbackFlags = { "-std=c++17" },
+                        },
                     })
                 end,
 
@@ -114,6 +117,10 @@ return {
         lspconfig.ocamllsp.setup({
             capabilities = capabilities,
             cmd = { "/Users/kush/.opam/default/bin/ocamllsp" },
+        })
+
+        lspconfig.zls.setup({
+            capabilities = capabilities,
         })
 
         local cmp = require("cmp")

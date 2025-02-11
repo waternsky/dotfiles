@@ -62,7 +62,7 @@ return {
                     },
                 },
             })
-            vim.cmd([[colorscheme catppuccin]])
+            vim.cmd([[colorscheme catppuccin-mocha]])
             vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't like LineNr color, so i changed it
         end,
     },
