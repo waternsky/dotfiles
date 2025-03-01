@@ -3,3 +3,27 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
     pattern = { "*.jsx", "*.tsx", "*.html", "*.ml", "*.js", "*.ts", "*.c", "*.cpp" },
     command = "set autoindent expandtab tabstop=2 shiftwidth=2",
 })
+
+-- vyper-lsp setup
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*.vy" },
+    callback = function()
+        vim.lsp.start({
+            name = "vyper-lsp",
+            cmd = { "vyper-lsp" },
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+        })
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*.vy" },
+    callback = function()
+        vim.lsp.start({
+            name = "vyper-lsp",
+            cmd = { "vyper-lsp" },
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+        })
+    end,
+})
