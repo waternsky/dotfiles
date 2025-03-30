@@ -62,8 +62,30 @@ return {
                     },
                 },
             })
-            vim.cmd([[colorscheme catppuccin-mocha]])
+            -- vim.cmd([[colorscheme catppuccin-mocha]])
             vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't like LineNr color, so i changed it
+        end,
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("nightfox").setup({
+                options = {
+                    transparent = true,
+                },
+            })
+            vim.cmd([[colorscheme carbonfox]])
+        end,
+    },
+    {
+        "bluz71/vim-moonfly-colors",
+        name = "moonfly",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- vim.cmd([[colorscheme moonfly]])
         end,
     },
 }
