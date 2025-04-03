@@ -161,7 +161,7 @@ return {
         })
 
         vim.diagnostic.config({
-            virtual_lines = true,
+            virtual_lines = { current_line = true },
             update_in_insert = true,
             float = {
                 focusable = false,
