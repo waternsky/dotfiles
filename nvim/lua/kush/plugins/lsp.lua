@@ -74,10 +74,16 @@ return {
                                 plugins = {
                                     ruff = {
                                         enabled = true,
+                                        ignore = { "E501" },
                                     },
                                     pycodestyle = {
                                         enabled = false,
-                                        ignore = { "E501" },
+                                    },
+                                    pyflakes = {
+                                        enabled = false,
+                                    },
+                                    mccabe = {
+                                        enabled = false,
                                     },
                                 },
                             },
