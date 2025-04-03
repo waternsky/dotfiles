@@ -26,3 +26,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
+
+vim.g.have_nerd_font = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
