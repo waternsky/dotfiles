@@ -20,6 +20,7 @@ return {
                 markdown = { "prettier" },
                 graphql = { "prettier" },
                 ocaml = { "ocamlformat" },
+                solidity = { "forge_fmt" },
             },
             format_on_save = {
                 lsp_fallback = true,

@@ -7,7 +7,13 @@ return {
             require("tokyonight").setup({
                 transparent = true,
             })
-            -- vim.cmd([[colorscheme tokyonight-moon]])
+            vim.cmd([[colorscheme tokyonight]])
+            -- vim.cmd([[hi LineNr guifg=#37dd21]])
+            -- vim.cmd([[hi CursorLineNr guifg=#cdd6f4]])
+            -- vim.cmd([[hi LineNrAbove guifg=#eba0ac]])
+            -- vim.cmd([[hi LineNrBelow guifg=#94e2d5]])
+            -- vim.cmd([[hi Status_LineNr guifg=#6c7086]])
+            -- vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
         end,
     },
     {
@@ -76,7 +82,7 @@ return {
                     transparent = true,
                 },
             })
-            vim.cmd([[colorscheme carbonfox]])
+            -- vim.cmd([[colorscheme carbonfox]])
         end,
     },
     {
@@ -86,6 +92,22 @@ return {
         priority = 1000,
         config = function()
             -- vim.cmd([[colorscheme moonfly]])
+        end,
+    },
+    {
+        "tiagovla/tokyodark.nvim",
+        config = function()
+            require("tokyodark").setup({
+                transparent_background = false,
+                styles = {
+                    comments = { italic = true },
+                    keywords = { italic = false },
+                    identifiers = { italic = false },
+                    functions = {},
+                    variables = {},
+                },
+            })
+            -- vim.cmd([[colorscheme tokyodark]])
         end,
     },
 }

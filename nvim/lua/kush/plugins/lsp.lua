@@ -139,8 +139,8 @@ return {
                 end,
             },
             window = {
-                completion = cmp.config.window.bordered({ border = "rounded" }),
-                documentation = cmp.config.window.bordered({ border = "rounded" }),
+                completion = cmp.config.window.bordered({ border = "bold" }),
+                documentation = cmp.config.window.bordered({ border = "bold" }),
             },
             mapping = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -166,7 +166,7 @@ return {
             float = {
                 focusable = false,
                 style = "minimal",
-                border = "rounded",
+                border = "bold",
                 source = "always",
                 header = "",
                 prefix = "",
@@ -193,10 +193,10 @@ return {
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
                 vim.keymap.set("n", "K", function()
-                    vim.lsp.buf.hover({ border = "rounded" })
+                    vim.lsp.buf.hover({ border = "bold" })
                 end, opts)
                 vim.keymap.set("i", "<C-k>", function()
-                    vim.lsp.buf.signature_help({ border = "rounded" })
+                    vim.lsp.buf.signature_help({ border = "bold" })
                 end, opts)
 
                 vim.api.nvim_buf_create_user_command(args.buf, "Format", function()
