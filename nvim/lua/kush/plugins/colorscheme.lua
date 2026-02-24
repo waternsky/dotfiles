@@ -8,12 +8,12 @@ return {
                 transparent = true,
             })
             vim.cmd([[colorscheme tokyonight]])
-            -- vim.cmd([[hi LineNr guifg=#37dd21]])
-            -- vim.cmd([[hi CursorLineNr guifg=#cdd6f4]])
-            -- vim.cmd([[hi LineNrAbove guifg=#eba0ac]])
-            -- vim.cmd([[hi LineNrBelow guifg=#94e2d5]])
-            -- vim.cmd([[hi Status_LineNr guifg=#6c7086]])
-            -- vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
+            vim.cmd([[hi LineNr guifg=#37dd21]])
+            vim.cmd([[hi CursorLineNr guifg=#cdd6f4]])
+            vim.cmd([[hi LineNrAbove guifg=#eba0ac]])
+            vim.cmd([[hi LineNrBelow guifg=#94e2d5]])
+            vim.cmd([[hi Status_LineNr guifg=#6c7086]])
+            vim.cmd([[hi Status_DivLine guibg=#1e1e2e guifg=#313244]])
         end,
     },
     {
@@ -69,7 +69,7 @@ return {
                 },
             })
             -- vim.cmd([[colorscheme catppuccin-mocha]])
-            vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't like LineNr color, so i changed it
+            -- vim.cmd([[hi LineNr guifg=#766f64]]) -- I didn't like LineNr color, so i changed it
         end,
     },
     {
@@ -82,7 +82,7 @@ return {
                     transparent = true,
                 },
             })
-            -- vim.cmd([[colorscheme carbonfox]])
+            -- vim.cmd([[colorscheme nordfox]])
         end,
     },
     {

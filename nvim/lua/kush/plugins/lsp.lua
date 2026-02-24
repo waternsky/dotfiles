@@ -94,6 +94,7 @@ return {
                 ["clangd"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.clangd.setup({
+                        filetypes = { "c", "cpp", "cuda" },
                         cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
                         -- init_options = {
                         --     fallbackFlags = { "-std=c++17" },
@@ -127,6 +128,7 @@ return {
 
         lspconfig.zls.setup({
             capabilities = capabilities,
+            cmd = { "/Users/kush/local/zls/zig-out/bin/zls" },
         })
 
         local cmp = require("cmp")
