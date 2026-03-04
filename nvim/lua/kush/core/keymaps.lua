@@ -8,3 +8,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<cr>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<cr>")
+
+vim.keymap.set("n", "<leader>td", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
