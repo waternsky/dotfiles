@@ -22,14 +22,6 @@ return {
         require("fidget").setup({})
         require("mason").setup()
 
-        local cmp_lsp = require("cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-            "force",
-            {},
-            vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities()
-        )
-
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
@@ -39,96 +31,17 @@ return {
                 "clangd",
                 "tailwindcss",
             },
-            handlers = {
-                function(server_name)
-                    require("lspconfig")[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "LuaJIT" },
-                                diagnostics = {
-                                    globals = { "vim", "describe", "it", "before_each", "after_each" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                                workspace = { checkThirdParty = false },
-                                telemetry = { enable = false },
-                            },
-                        },
-                    })
-                end,
-
-                ["pylsp"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.pylsp.setup({
-                        settings = {
-                            pylsp = {
-                                plugins = {
-                                    ruff = {
-                                        enabled = true,
-                                        ignore = { "E501" },
-                                    },
-                                    pycodestyle = {
-                                        enabled = false,
-                                    },
-                                    pyflakes = {
-                                        enabled = false,
-                                    },
-                                    mccabe = {
-                                        enabled = false,
-                                    },
-                                },
-                            },
-                        },
-                    })
-                end,
-
-                ["clangd"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.clangd.setup({
-                        filetypes = { "c", "cpp", "cuda" },
-                        cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
-                        -- init_options = {
-                        --     fallbackFlags = { "-std=c++17" },
-                        -- },
-                    })
-                end,
-
-                ["ts_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.ts_ls.setup({
-                        settings = {
-                            implicitProjectConfiguration = {
-                                checkJs = true,
-                            },
-                        },
-                    })
-                end,
-            },
         })
 
-        local lspconfig = require("lspconfig")
-        lspconfig.mojo.setup({
-            capabilities = capabilities,
-            cmd = { "/Users/kush/.modular/bin/mojo-lsp-server" },
-        })
-
-        lspconfig.ocamllsp.setup({
-            capabilities = capabilities,
-            cmd = { "/Users/kush/.opam/default/bin/ocamllsp" },
-        })
-
-        lspconfig.zls.setup({
-            capabilities = capabilities,
-            cmd = { "/Users/kush/local/zls/zig-out/bin/zls" },
+        -- mason-lspconfig calls this good practice (incase you uninstall mason)
+        vim.lsp.enable({
+            "lua_ls",
+            "clangd",
+            "zls",
+            "mojo",
+            "ocamllsp",
+            "pylsp",
+            "ts_ls",
         })
 
         local cmp = require("cmp")
