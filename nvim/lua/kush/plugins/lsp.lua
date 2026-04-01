@@ -44,6 +44,10 @@ return {
             "ts_ls",
         })
 
+        vim.lsp.config("zls", {
+            cmd = { "/Users/kush/local/zls/zig-out/bin/zls" },
+        })
+
         local cmp = require("cmp")
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
