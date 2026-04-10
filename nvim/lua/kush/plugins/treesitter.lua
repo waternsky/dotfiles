@@ -1,35 +1,43 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
-    config = function ()
-
-        local configs = require("nvim-treesitter.configs")
-
-        configs.setup({
-            ensure_installed = {
-                "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-                "jsdoc", "bash", "css", "dockerfile", "go", "html", "python",
-                "ocaml", "sql", "tsx", "cpp",
-            },
-            sync_install = false,
-            auto_install = true,
-            indent = {
-                enable = true
-            },
-            highlight = {
-                enable = true,
-                additional_vim_regex_highlighting = { "markdown" },
-            },
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-space>",
-                    node_incremental = "<C-space>",
-                    scope_incremental = false,
-                    node_decremental = "<bs>",
-                },
-            },
+    init = function()
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "<filetype>" },
+            callback = function()
+                pcall(vim.treesitter.start)
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
         })
+
+        local ensure_installed = {
+            "vimdoc",
+            "javascript",
+            "typescript",
+            "c",
+            "lua",
+            "rust",
+            "jsdoc",
+            "bash",
+            "css",
+            "dockerfile",
+            "go",
+            "html",
+            "python",
+            "ocaml",
+            "sql",
+            "tsx",
+            "cpp",
+        }
+
+        local already_installed = require("nvim-treesitter").get_installed()
+        local parser_install = vim.iter(ensure_installed)
+            :filter(function(parser)
+                return not vim.tbl_contains(already_installed, parser)
+            end)
+            :totable()
+        require("nvim-treesitter").install(parser_install)
     end,
 }
